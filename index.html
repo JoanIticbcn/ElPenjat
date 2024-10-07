@@ -4,48 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="top">
-        <input type="password" name="" id="introdueix_paraula">
-        <button onclick="començem()">Començar partida</button>
+        <input type="password" name="" id="introdueix_paraula" placeholder="introdueix una paraula">
+        <button onclick="començem()" id="btn-comencem">Començar partida</button>
+        <button onclick="canviarVisible()" id="eye"><i class="fa fa-eye"></i></button>
     </div>
     <div class="paraula">
-        <h2></h2>
+        <h2 id="paraula-display"></h2>
     </div>
     <div class="medio">
         <img src="" alt=""></img>
     </div>
     <div class="lletres">
-        <button id="lletraA">A</button>
-        <button id="lletraB">B</button>
-        <button id="lletraC">C</button>
-        <button id="lletraD">D</button>
-        <button id="lletraE">E</button>
-        <button id="lletraF">F</button>
-        <button id="lletraG">G</button>
-        <button id="lletraH">H</button>
-        <button id="lletraI">I</button>
-        <button id="lletraJ">J</button>
-        <button id="lletraK">K</button>
-        <button id="lletraL">L</button>
-        <button id="lletraM">M</button>
-        <button id="lletraN">N</button>
-        <button id="lletraO">O</button>
-        <button id="lletraP">P</button>
-        <button id="lletraQ">Q</button>
-        <button id="lletraR">R</button>
-        <button id="lletraS">S</button>
-        <button id="lletraT">T</button>
-        <button id="lletraU">U</button>
-        <button id="lletraV">V</button>
-        <button id="lletraW">W</button>
-        <button id="lletraX">X</button>
-        <button id="lletraY">Y</button>
-        <button id="lletraZ">Z</button>
-
+        <button id="lletraA" onclick="getLletra(this)">A</button>
+        <button id="lletraB" onclick="getLletra(this)">B</button>
+        <button id="lletraC" onclick="getLletra(this)">C</button>
+        <button id="lletraD" onclick="getLletra(this)">D</button>
+        <button id="lletraE" onclick="getLletra(this)">E</button>
+        <button id="lletraF" onclick="getLletra(this)">F</button>
+        <button id="lletraG" onclick="getLletra(this)">G</button>
+        <button id="lletraH" onclick="getLletra(this)">H</button>
+        <button id="lletraI" onclick="getLletra(this)">I</button>
+        <button id="lletraJ" onclick="getLletra(this)">J</button>
+        <button id="lletraK" onclick="getLletra(this)">K</button>
+        <button id="lletraL" onclick="getLletra(this)">L</button>
+        <button id="lletraM" onclick="getLletra(this)">M</button>
+        <button id="lletraN" onclick="getLletra(this)">N</button>
+        <button id="lletraO" onclick="getLletra(this)">O</button>
+        <button id="lletraP" onclick="getLletra(this)">P</button>
+        <button id="lletraQ" onclick="getLletra(this)">Q</button>
+        <button id="lletraR" onclick="getLletra(this)">R</button>
+        <button id="lletraS" onclick="getLletra(this)">S</button>
+        <button id="lletraT" onclick="getLletra(this)">T</button>
+        <button id="lletraU" onclick="getLletra(this)">U</button>
+        <button id="lletraV" onclick="getLletra(this)">V</button>
+        <button id="lletraW" onclick="getLletra(this)">W</button>
+        <button id="lletraX" onclick="getLletra(this)">X</button>
+        <button id="lletraY" onclick="getLletra(this)">Y</button>
+        <button id="lletraZ" onclick="getLletra(this)">Z</button>
     </div>
-    <script src="script.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 </html>
