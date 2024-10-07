@@ -1,0 +1,20 @@
+div.top{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;   
+}
+div.paraula{
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+div.medio{
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+div.lletres{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
