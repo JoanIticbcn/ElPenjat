@@ -1,21 +1,53 @@
+body{
+    background-color: lightcyan;
+}
 div.top{
     display: flex;
     justify-content: flex-end;
     align-items: center;  
-    margin: 10px 10px 10px 10px; 
+    margin: 50px 10px 10px 10px; 
+}
+div.top #btn-comencem{
+    margin-right: 60px;
+    margin-left: 40px;
 }
 div.paraula{
     display: flex;
     justify-content: center;
     align-items: center;   
+    border-radius: 5%;
+    border: 1px solid black;
+    background-color: lightcoral;
 }
 div.medio{
     display: flex;
     justify-content: flex-start;
     align-items: center;   
 }
+.infoP1{
+    border-radius: 5%;
+    border: 1px solid black;
+    background-color: lightcoral;
+    width: 380px;
+}
+.infoP2{
+    margin-left:250px ;
+    border-radius: 5%;
+    border: 1px solid black;
+    background-color: lightcoral;
+    width: 320px;
+}
 div.lletres{
+    margin-top: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+div.lletres button{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+img#imgPenjat{
+    margin-top: 45px;
+    margin-left: 270px;
 }
