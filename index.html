@@ -8,14 +8,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <!--Navbar del top-->
     <div class="top">
         <input type="password" name="" id="introdueix_paraula" placeholder="introdueix una paraula">
         <button onclick="canviarVisible()" id="eye"><i class="fa fa-eye"></i></button>
         <button onclick="començem()" id="btn-comencem">Començar partida</button>
     </div>
+    <!--Display de la paraula-->
     <div class="paraula" id="divh2paraula">
         <h2 id="paraula-display"></h2>
     </div>
+    <!--Secció del mitg-->
     <div class="medio">
         <section class="infoP1">
             <h4>Jugador1</h4>
@@ -25,7 +28,7 @@
             <p>Partides guanyades: <span id="partidesGuanyades"></span></p>
             <p>Partida amb més punts: <span id="partidaMesAlta"></span></p>
         </section>
-        <img src="imgs/penjat_0.jpg" alt="" id="imgPenjat"></img>
+        <img src="imgs/penjat_0.jpg" alt="imatgePenjat" id="imgPenjat"></img>
         <section class="infoP2">
             <h4>Jugador2</h4>
             <p>Numero de jugades: <span id="njugadas2"></span></p>
@@ -35,6 +38,7 @@
             <p>Partida amb més punts: <span id="partidaMesAlta2"></span></p>
         </section>
     </div>
+    <!--Lletres-->
     <div class="lletres">
         <button id="lletra1" onclick="getLletra(this)">A</button>
         <button id="lletra2" onclick="getLletra(this)">B</button>

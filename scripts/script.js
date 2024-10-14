@@ -41,9 +41,10 @@ function començem() {
                 for(j=0;j<paraulaSecretaArrayDisplay.length;j++){
                     paraulaSecretaArrayDisplay.pop()
                 }
-                //Creem la Array amb la paraula amb el split si te espai i si no amb el Array.from
+                //Creem la Array amb la paraula amb el replace si te espai i si no amb el Array.from
                 if (paraulaSecreta.indexOf(" ") > -1) {
-                    paraulaSecretaArray = paraulaSecreta.split(" ")
+                    paraulaSecretaArray = paraulaSecreta.replaceAll(" ","")
+                    console.log(paraulaSecretaArray)
                 } else {
                     paraulaSecretaArray = Array.from(paraulaSecreta)
                 }
@@ -59,7 +60,7 @@ function començem() {
                 imatgepenjat.src = "imgs/penjat_" + imgNumJugades + ".jpg"
                 //Posem els guions - a la paraula del mitg
                 let paraulaaux = ""
-                for (i = 0; i < paraulaSecreta.length; i++) {
+                for (i = 0; i < paraulaSecretaArray.length; i++) {
                     paraulaaux += "- "
                     paraulaSecretaArrayDisplay[i] = "-"
                 }
