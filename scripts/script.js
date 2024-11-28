@@ -5,11 +5,19 @@ let paraulaSecretaArrayDisplay = [];
 //Declarem les variables globals necessaries que utilitzrem més endavant
 let paraulah2 = document.getElementById("paraula-display")
 //Variable de punts de la partida P1 i P2
+let puntsObjecteJoc = {
+    "puntsPactual": [0,0],
+    "totalPartidas":0,
+    "partidasGuanyades":0,
+    "maximPunts":0
+}
+/*
 let puntsPactual = [0, 0];
 let totalPartidas = 0;
 let partidasGuanyades = 0;
-let winStreak = 1;
 let maximPunts = 0;
+*/
+let winStreak = 1;
 let valorDeLaLletra;
 let nJugades = 10;
 let imatgepenjat = document.getElementById("imgPenjat");
@@ -55,19 +63,19 @@ function començem() {
                 //Posem els valors inicials a les variables i el text corresponent al HTML
                 document.getElementById("player" + torn).style.backgroundColor = "green"
                 nJugades = 10;
-                puntsPactual[0] = 0
-                puntsPactual[1] = 0
+                puntsObjecteJoc.puntsPactual[0] = 0
+                puntsObjecteJoc.puntsPactual[1] = 0
                 winStreak = 1;
                 imgNumJugades = 0
                 //Player 1
                 document.getElementById("njugadas").textContent = nJugades
-                document.getElementById("ppactual").textContent = puntsPactual[0]
-                document.getElementById("totalPartidas").textContent = totalPartidas
-                document.getElementById("partidesGuanyades").textContent = partidasGuanyades
+                document.getElementById("ppactual").textContent = puntsObjecteJoc.puntsPactual[0]
+                document.getElementById("totalPartidas").textContent = puntsObjecteJoc.totalPartidas
+                document.getElementById("partidesGuanyades").textContent = puntsObjecteJoc.partidasGuanyades
                 //Player 2
                 document.getElementById("njugadas2").textContent = nJugades
-                document.getElementById("ppactual2").textContent = puntsPactual[1]
-                document.getElementById("totalPartidas2").textContent = totalPartidas
+                document.getElementById("ppactual2").textContent = puntsObjecteJoc.puntsPactual[1]
+                document.getElementById("totalPartidas2").textContent = puntsObjecteJoc.totalPartidas
                 document.getElementById("partidesGuanyades2").textContent = partidesGuanyades2
                 imatgepenjat.src = "imgs/penjat_" + imgNumJugades + ".jpg"
                 //Posem els guions - a la paraula del mitg
@@ -115,9 +123,9 @@ function comprovacions() {
             if (paraulaSecretaArray[index] == valorDeLaLletra) {
                 paraulaSecretaArrayDisplay[index] = valorDeLaLletra
                 if (torn == 1) {
-                    puntsPactual[0] += 1 * winStreak
+                    puntsObjecteJoc.puntsPactual[0] += 1 * winStreak
                 } else {
-                    puntsPactual[1] += 1 * winStreak
+                    puntsObjecteJoc.puntsPactual[1] += 1 * winStreak
                 }
                 winStreak += 1
             }
@@ -130,8 +138,8 @@ function comprovacions() {
         }
         //Actualitzem el HTML
         paraulah2.textContent = auxiliarP.toLocaleUpperCase()
-        document.getElementById("ppactual").textContent = puntsPactual[0]
-        document.getElementById("ppactual2").textContent = puntsPactual[1]
+        document.getElementById("ppactual").textContent = puntsObjecteJoc.puntsPactual[0]
+        document.getElementById("ppactual2").textContent = puntsObjecteJoc.puntsPactual[1]
     } else {
         //Si la lletra premuda no es acertada restem els punts la jugada i resetejem el winstreak, actualitzem els valors corresponents al HTML
         nJugades = nJugades - 1;
@@ -139,13 +147,13 @@ function comprovacions() {
         document.getElementById("njugadas").textContent = nJugades
         document.getElementById("njugadas2").textContent = nJugades
         //Per a prevenir punts negatius
-        if (puntsPactual[0] > 0 && puntsPactual[1] > 0) {
+        if (puntsObjecteJoc.puntsPactual[0] > 0 && puntsObjecteJoc.puntsPactual[1] > 0) {
             if (torn == 1) {
-                puntsPactual[0] -= 1
-                document.getElementById("ppactual").textContent = puntsPactual[0]
+                puntsObjecteJoc.puntsPactual[0] -= 1
+                document.getElementById("ppactual").textContent = puntsObjecteJoc.puntsPactual[0]
             } else {
-                puntsPactual[1] -= 1
-                document.getElementById("ppactual2").textContent = puntsPactual[1]
+                puntsObjecteJoc.puntsPactual[1] -= 1
+                document.getElementById("ppactual2").textContent = puntsObjecteJoc.puntsPactual[1]
             }
         }
         //Per a canviar la imatge indicadora del penjat
@@ -173,44 +181,44 @@ function comprovacions() {
         document.getElementById("eye").disabled = false;
         //Reinicialitzem nJugades per evitar conflictes i actualitzem el recompte de partides i ho posem tot al HTML
         nJugades = 10;
-        totalPartidas += 1
+        puntsObjecteJoc.totalPartidas += 1
         //Sumem les partides guanyades a qui hagi guanyat
-        if(puntsPactual[0]==puntsPactual[1]){
+        if(puntsObjecteJoc.puntsPactual[0]==puntsObjecteJoc.puntsPactual[1]){
             alert("Hi ha hagut un empat")
         }else{
-            if(puntsPactual[0]>puntsPactual[1]){
-                partidasGuanyades+=1
+            if(puntsObjecteJoc.puntsPactual[0]>puntsObjecteJoc.puntsPactual[1]){
+                puntsObjecteJoc.partidasGuanyades+=1
             }else{
                 partidesGuanyades2+=1
             }
         }
 
-        document.getElementById("totalPartidas").textContent = totalPartidas
-        document.getElementById("totalPartidas2").textContent = totalPartidas
+        document.getElementById("totalPartidas").textContent = puntsObjecteJoc.totalPartidas
+        document.getElementById("totalPartidas2").textContent = puntsObjecteJoc.totalPartidas
         if (torn == 1) {
-            document.getElementById("partidesGuanyades").textContent = partidasGuanyades
+            document.getElementById("partidesGuanyades").textContent = puntsObjecteJoc.partidasGuanyades
         } else {
             document.getElementById("partidesGuanyades2").textContent = partidesGuanyades2
         }
 
         //Comprovem la maxima puntuació i formatejem el text amb el Dia Mes i Punts Mes grans
-        if (puntsPactual[0] > maximPunts) {
-            maximPunts = puntsPactual[0]
+        if (puntsObjecteJoc.puntsPactual[0] > puntsObjecteJoc.maximPunts) {
+            puntsObjecteJoc.maximPunts = puntsObjecteJoc.puntsPactual[0]
         }
         let dataActual = new Date()
         document.getElementById("partidaMesAlta").textContent = "Dia " + dataActual.getDate() + " Mes " + (dataActual.getMonth() + 1) + " Punts " + maximPunts
         //Player 2
-        if (puntsPactual[1] > maximPunts) {
-            maximPunts = puntsPactual[1]
+        if (puntsObjecteJoc.puntsPactual[1] > puntsObjecteJoc.maximPunts) {
+            puntsObjecteJoc.maximPunts = puntsObjecteJoc.puntsPactual[1]
         }
         document.getElementById("partidaMesAlta2").textContent = "Dia " + dataActual.getDate() + " Mes " + (dataActual.getMonth() + 1) + " Punts " + maximPunts
         //Desacivem les lletres
         desactivarLletres()
         //Determinem el guanyador de la partida al final o si hi ha hagut un empat
-        if(puntsPactual[0]==puntsPactual[1]){
+        if(puntsObjecteJoc.puntsPactual[0]==puntsObjecteJoc.puntsPactual[1]){
             alert("Hi ha hagut un empat")
         }else{
-            if(puntsPactual[0]>puntsPactual[1]){
+            if(puntsObjecteJoc.puntsPactual[0]>puntsObjecteJoc.puntsPactual[1]){
                 alert("Guanya el jugador 1")
             }else{
                 alert("Guanya el jugador 2")
@@ -226,19 +234,19 @@ function comprovacions() {
         document.getElementById("eye").disabled = false;
         //Reinicialitzem nJugades per evitar conflictes i actualitzem el recompte de partides i ho posem tot al HTML
         nJugades = 10;
-        totalPartidas += 1
-        document.getElementById("totalPartidas").textContent = totalPartidas
-        document.getElementById("partidesGuanyades").textContent = partidasGuanyades
+        puntsObjecteJoc.totalPartidas += 1
+        document.getElementById("totalPartidas").textContent = puntsObjecteJoc.totalPartidas
+        document.getElementById("partidesGuanyades").textContent = puntsObjecteJoc.partidasGuanyades
         //Comprovem la maxima puntuació i formatejem el text amb el Dia Mes i Punts Mes grans
         //Player 1
-        if (puntsPactual[0] > maximPunts) {
-            maximPunts = puntsPactual[0]
+        if (puntsObjecteJoc.puntsPactual[0] > puntsObjecteJoc.maximPunts) {
+            puntsObjecteJoc.maximPunts = puntsObjecteJoc.puntsPactual[0]
         }
         let dataActual = new Date()
         document.getElementById("partidaMesAlta").textContent = "Dia " + dataActual.getDate() + " Mes " + (dataActual.getMonth() + 1) + " Punts " + maximPunts
         //Player 2
-        if (puntsPactual[1] > maximPunts) {
-            maximPunts = puntsPactual[1]
+        if (puntsObjecteJoc.puntsPactual[1] > puntsObjecteJoc.maximPunts) {
+            puntsObjecteJoc.maximPunts = puntsObjecteJoc.puntsPactual[1]
         }
         document.getElementById("partidaMesAlta2").textContent = "Dia " + dataActual.getDate() + " Mes " + (dataActual.getMonth() + 1) + " Punts " + maximPunts
         //Desacivem les lletres
