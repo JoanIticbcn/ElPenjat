@@ -279,3 +279,13 @@ function desactivarLletra(lletra) {
     document.getElementById(lletra).style.borderColor = "red";
     document.getElementById(lletra).style.backgroundColor = "yellow";
 }
+
+//Funcio per crear els botons 
+
+fetch("http://127.0.0.1:5500/res/abecedari_cat.json")
+.then(function (response){
+    return response.json()
+})
+.then(function(data){
+    console.log(data)
+})
