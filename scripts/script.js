@@ -6,10 +6,10 @@ let paraulaSecretaArrayDisplay = [];
 let paraulah2 = document.getElementById("paraula-display")
 //Variable de punts de la partida P1 i P2
 let puntsObjecteJoc = {
-    "puntsPactual": [0,0],
-    "totalPartidas":0,
-    "partidasGuanyades":0,
-    "maximPunts":0
+    "puntsPactual": [0, 0],
+    "totalPartidas": 0,
+    "partidasGuanyades": 0,
+    "maximPunts": 0
 }
 /*
 let puntsPactual = [0, 0];
@@ -183,13 +183,13 @@ function comprovacions() {
         nJugades = 10;
         puntsObjecteJoc.totalPartidas += 1
         //Sumem les partides guanyades a qui hagi guanyat
-        if(puntsObjecteJoc.puntsPactual[0]==puntsObjecteJoc.puntsPactual[1]){
+        if (puntsObjecteJoc.puntsPactual[0] == puntsObjecteJoc.puntsPactual[1]) {
             alert("Hi ha hagut un empat")
-        }else{
-            if(puntsObjecteJoc.puntsPactual[0]>puntsObjecteJoc.puntsPactual[1]){
-                puntsObjecteJoc.partidasGuanyades+=1
-            }else{
-                partidesGuanyades2+=1
+        } else {
+            if (puntsObjecteJoc.puntsPactual[0] > puntsObjecteJoc.puntsPactual[1]) {
+                puntsObjecteJoc.partidasGuanyades += 1
+            } else {
+                partidesGuanyades2 += 1
             }
         }
 
@@ -215,12 +215,12 @@ function comprovacions() {
         //Desacivem les lletres
         desactivarLletres()
         //Determinem el guanyador de la partida al final o si hi ha hagut un empat
-        if(puntsObjecteJoc.puntsPactual[0]==puntsObjecteJoc.puntsPactual[1]){
+        if (puntsObjecteJoc.puntsPactual[0] == puntsObjecteJoc.puntsPactual[1]) {
             alert("Hi ha hagut un empat")
-        }else{
-            if(puntsObjecteJoc.puntsPactual[0]>puntsObjecteJoc.puntsPactual[1]){
+        } else {
+            if (puntsObjecteJoc.puntsPactual[0] > puntsObjecteJoc.puntsPactual[1]) {
                 alert("Guanya el jugador 1")
-            }else{
+            } else {
                 alert("Guanya el jugador 2")
             }
         }
@@ -281,11 +281,30 @@ function desactivarLletra(lletra) {
 }
 
 //Funcio per crear els botons 
+const loadButtons = function () {
+    fetch("http://127.0.0.1:5500/res/abecedari_cat.json")
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (data) {
+            for(let i=0;i<data.length;i++){
+                const boto = document.createElement("button")
+                boto.className = "button-game"
+                boto.textContent = data[i]
+                boto.addEventListener("click",() => jugar(boto))
+                contenidor.appendChild(boto)
+                console.log(boto)
+            }
+        })
+}
 
-fetch("http://127.0.0.1:5500/res/abecedari_cat.json")
-.then(function (response){
-    return response.json()
-})
-.then(function(data){
-    console.log(data)
-})
+//Funcio que dona una paraula aleatoria del fitxer paraulesTematica.json
+function getParaula(){
+    fetch("http://127.0.0.1:5500/res/paraulesTematica.json")
+    .then(function(response){
+        return response.json()
+    })
+    .then(function(data){
+        console.log(data["tematiques"][(Math.floor(Math.random()*2))]["paraules"][(Math.floor(Math.random()*5))])
+    })
+}
